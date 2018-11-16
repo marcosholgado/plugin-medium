@@ -1,0 +1,7 @@
+build/
+.idea/
+
+# OSX files
+.DS_Store
+
+.gradle/
