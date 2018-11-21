@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>myplugin.myplugin</id>
-    <name>Plugin display name here</name>
+    <name>My awesome plugin</name>
     <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
     <description><![CDATA[
@@ -13,6 +13,12 @@
     <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
+
+    <application-components>
+        <component>
+            <implementation-class>components.MyComponent</implementation-class>
+        </component>
+    </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
