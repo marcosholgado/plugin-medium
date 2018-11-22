@@ -43,9 +43,7 @@ class MyComponent: ApplicationComponent, Serializable, PersistentStateComponent<
         var i = 0
 
         do {
-            val l1 = s1[i]
-            val l2 = s2[i]
-            if (l1 < l2) return true
+            if (s1[i] < s2[i]) return true
             i++
         } while (i < s1.size && i < s2.size)
 
