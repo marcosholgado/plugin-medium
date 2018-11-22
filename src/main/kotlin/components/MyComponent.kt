@@ -10,13 +10,14 @@ import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.util.xmlb.XmlSerializerUtil
-import java.io.Serializable
+import com.intellij.util.xmlb.annotations.Attribute
 
 
 @State(name = "MyConfiguration", storages = [Storage(value = "myConfiguration.xml")])
-class MyComponent: ApplicationComponent, Serializable, PersistentStateComponent<MyComponent> {
+class MyComponent: ApplicationComponent, PersistentStateComponent<MyComponent> {
 
-    var localVersion: String = "0.0"
+    @Attribute
+    private var localVersion: String = "0.0"
     private lateinit var version: String
 
     override fun initComponent() {
