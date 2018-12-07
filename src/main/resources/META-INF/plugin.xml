@@ -20,8 +20,19 @@
         </component>
     </application-components>
 
+    <project-components>
+        <component>
+            <implementation-class>
+                components.JiraComponent
+            </implementation-class>
+        </component>
+    </project-components>
+
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <defaultProjectTypeProvider type="Android"/>
+        <projectConfigurable
+                instance="settings.JiraSettings">
+        </projectConfigurable>
     </extensions>
 
     <actions>
