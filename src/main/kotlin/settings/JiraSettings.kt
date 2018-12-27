@@ -59,12 +59,12 @@ class JiraSettings(private val project: Project): Configurable, DocumentListener
         mainPanel.add(txtUsername)
         txtUsername.columns = 10
 
-        passwordField.document?.addDocumentListener(this)
-        txtUsername.document?.addDocumentListener(this)
-
         val config = JiraComponent.getInstance(project)
         txtUsername.text = config.username
         passwordField.text = config.password
+
+        passwordField.document?.addDocumentListener(this)
+        txtUsername.document?.addDocumentListener(this)
 
         return mainPanel
     }
