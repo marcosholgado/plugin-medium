@@ -13,7 +13,9 @@ class JiraComponent(project: Project? = null) :
         PersistentStateComponent<JiraComponent> {
 
     var username: String = ""
-    var password: String = ""
+    var token: String = ""
+    var url: String = ""
+    var regex: String = ""
 
     override fun getState(): JiraComponent? = this
 

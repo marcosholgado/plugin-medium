@@ -6,12 +6,24 @@ plugins {
 group 'myplugin'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'kotlin-kapt'
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.10"
+
+    compile 'com.google.dagger:dagger:2.20'
+    kapt 'com.google.dagger:dagger-compiler:2.20'
+
+    compile 'com.squareup.retrofit2:retrofit:2.5.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    compile 'io.reactivex.rxjava2:rxjava:2.2.5'
+    compile "com.github.akarnokd:rxjava2-swing:0.3.3"
 }
 
 compileKotlin {
@@ -22,6 +34,7 @@ compileTestKotlin {
 }
 intellij {
     version '2018.1.6'
+    plugins = ['git4idea']
     alternativeIdePath '/Applications/Android Studio.app'
 }
 patchPluginXml {

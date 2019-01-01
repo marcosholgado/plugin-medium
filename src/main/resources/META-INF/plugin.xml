@@ -13,6 +13,7 @@
     <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
+    <depends>Git4Idea</depends>
 
     <application-components>
         <component>
@@ -44,6 +45,18 @@
                     class="actions.MyAction"
                     text="_MyAction"
                     description="MyAction"/>
+        </group>
+
+        <group id="MediumMenu" text="_Medium" description="Medium" popup="true">
+            <group id="MediumInsideMenu" text="_Medium" description="Medium">
+                <action id="JiraMoveIssue"
+                        class="actions.jiraAction.JiraMoveAction"
+                        text="Move Issue"
+                        description="Move Issue in Jira">
+                    <keyboard-shortcut first-keystroke="control alt k" keymap="$default"/>
+                </action>
+            </group>
+            <add-to-group group-id="ProjectViewPopupMenu" relative-to-action="RefactoringMenu" anchor="before"/>
         </group>
     </actions>
 </idea-plugin>
