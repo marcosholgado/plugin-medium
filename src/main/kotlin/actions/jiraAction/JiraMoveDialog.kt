@@ -1,23 +1,23 @@
 package actions.jiraAction
 
 import actions.jiraAction.di.JiraModule
-import actions.jiraAction.di.DaggerJiraDIComponent
 import actions.jiraAction.network.Transition
 import com.intellij.notification.NotificationDisplayType
 import com.intellij.notification.NotificationGroup
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
+import utils.StringsBundle
 import javax.inject.Inject
 import javax.swing.JComponent
 
-class JiraMoveDialog constructor(private val project: Project):
+class JiraMoveDialog constructor(private val project: Project) :
         DialogWrapper(true) {
 
     @Inject
     lateinit var presenter: JiraMoveDialogPresenter
 
-    private val panel : JiraMovePanel = JiraMovePanel()
+    private val panel: JiraMovePanel = JiraMovePanel()
 
     init {
         DaggerJiraDIComponent.builder()
@@ -35,7 +35,7 @@ class JiraMoveDialog constructor(private val project: Project):
     fun setIssue(issue: String) = panel.setIssue(issue)
 
     fun setTransitions(transitionList: List<Transition>) {
-        for(transition in transitionList) {
+        for (transition in transitionList) {
             panel.addTransition(transition)
         }
     }
@@ -44,11 +44,21 @@ class JiraMoveDialog constructor(private val project: Project):
         close(DialogWrapper.OK_EXIT_CODE)
 
         val noti = NotificationGroup("myplugin", NotificationDisplayType.BALLOON, true)
-        noti.createNotification("Success", "Issue moved", NotificationType.INFORMATION, null).notify(project)
+        noti.createNotification(
+                StringsBundle.message("common.success"),
+                StringsBundle.message("issue.moved"),
+                NotificationType.INFORMATION,
+                null
+        ).notify(project)
     }
 
     fun error(throwable: Throwable) {
         val noti = NotificationGroup("myplugin", NotificationDisplayType.BALLOON, true)
-        noti.createNotification("Error", throwable.localizedMessage, NotificationType.ERROR, null).notify(project)
+        noti.createNotification(
+                StringsBundle.message("common.error"),
+                throwable.localizedMessage,
+                NotificationType.ERROR,
+                null
+        ).notify(project)
     }
 }

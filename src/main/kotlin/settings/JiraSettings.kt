@@ -3,6 +3,7 @@ package settings
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
 import components.JiraComponent
+import utils.StringsBundle
 import javax.swing.*
 import javax.swing.event.DocumentEvent
 import javax.swing.event.DocumentListener
@@ -19,7 +20,7 @@ class JiraSettings(private val project: Project): Configurable, DocumentListener
 
     override fun isModified(): Boolean = modified
 
-    override fun getDisplayName(): String = "MyPlugin Jira"
+    override fun getDisplayName(): String = StringsBundle.message("plugin.name")
 
     override fun apply() {
         val config = JiraComponent.getInstance(project)
@@ -49,19 +50,19 @@ class JiraSettings(private val project: Project): Configurable, DocumentListener
         mainPanel.setBounds(0, 0, 452, 254)
         mainPanel.layout = null
 
-        val lblUsername = JLabel("Username")
+        val lblUsername = JLabel(StringsBundle.message("settings.username"))
         lblUsername.setBounds(30, 25, 83, 16)
         mainPanel.add(lblUsername)
 
-        val lblPassword = JLabel("Token")
+        val lblPassword = JLabel(StringsBundle.message("settings.token"))
         lblPassword.setBounds(30, 74, 83, 16)
         mainPanel.add(lblPassword)
 
-        val lblUrl = JLabel("Jira URL")
+        val lblUrl = JLabel(StringsBundle.message("settings.jiraUrl"))
         lblUrl.setBounds(30, 123, 83, 16)
         mainPanel.add(lblUrl)
 
-        val lblRegEx = JLabel("RegEx")
+        val lblRegEx = JLabel(StringsBundle.message("settings.regEx"))
         lblRegEx.setBounds(30, 172, 83, 16)
         mainPanel.add(lblRegEx)
 

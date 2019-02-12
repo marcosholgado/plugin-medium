@@ -2,6 +2,7 @@ package actions.jiraAction
 
 import actions.jiraAction.network.Transition
 import com.intellij.openapi.ui.ComboBox
+import utils.StringsBundle
 import java.awt.Dimension
 import javax.swing.JLabel
 import javax.swing.JPanel
@@ -19,14 +20,14 @@ class JiraMovePanel : JPanel() {
     private fun initComponents() {
         layout = null
 
-        val lblJiraTicket = JLabel("Issue")
+        val lblJiraTicket = JLabel(StringsBundle.message("issue"))
         lblJiraTicket.setBounds(25, 33, 77, 16)
         add(lblJiraTicket)
 
         txtIssue.setBounds(114, 28, 183, 26)
         add(txtIssue)
 
-        val lblTransition = JLabel("Transition")
+        val lblTransition = JLabel(StringsBundle.message("transition"))
         lblTransition.setBounds(25, 75, 77, 16)
         add(lblTransition)
 

@@ -11,6 +11,7 @@ import com.intellij.openapi.components.Storage
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.util.xmlb.XmlSerializerUtil
 import com.intellij.util.xmlb.annotations.Attribute
+import utils.StringsBundle
 
 
 @State(name = "MyConfiguration", storages = [Storage(value = "myConfiguration.xml")])
@@ -28,7 +29,12 @@ class MyComponent: ApplicationComponent, PersistentStateComponent<MyComponent> {
         if (isANewVersion()) {
             updateLocalVersion()
             val noti = NotificationGroup("myplugin", NotificationDisplayType.BALLOON, true)
-            noti.createNotification("Plugin updated", "Welcome to the new version", NotificationType.INFORMATION, null).notify(null)
+            noti.createNotification(
+                    StringsBundle.message("plugin.updated"),
+                    StringsBundle.message("plugin.new.message"),
+                    NotificationType.INFORMATION,
+                    null
+            ).notify(null)
         }
     }
 
