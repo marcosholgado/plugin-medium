@@ -33,7 +33,7 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 intellij {
-    version '2018.1.6'
+    version '2018.2.2'
     plugins = ['git4idea']
     alternativeIdePath '/Applications/Android Studio.app'
 }
