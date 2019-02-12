@@ -1,8 +1,6 @@
 package components
 
 import com.intellij.ide.plugins.PluginManager
-import com.intellij.notification.NotificationDisplayType
-import com.intellij.notification.NotificationGroup
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.components.ApplicationComponent
 import com.intellij.openapi.components.PersistentStateComponent
@@ -12,6 +10,7 @@ import com.intellij.openapi.extensions.PluginId
 import com.intellij.util.xmlb.XmlSerializerUtil
 import com.intellij.util.xmlb.annotations.Attribute
 import utils.StringsBundle
+import utils.Utils
 
 
 @State(name = "MyConfiguration", storages = [Storage(value = "myConfiguration.xml")])
@@ -28,13 +27,13 @@ class MyComponent: ApplicationComponent, PersistentStateComponent<MyComponent> {
 
         if (isANewVersion()) {
             updateLocalVersion()
-            val noti = NotificationGroup("myplugin", NotificationDisplayType.BALLOON, true)
-            noti.createNotification(
+            Utils.createNotification(
                     StringsBundle.message("plugin.updated"),
                     StringsBundle.message("plugin.new.message"),
+                    null,
                     NotificationType.INFORMATION,
                     null
-            ).notify(null)
+            )
         }
     }
 
