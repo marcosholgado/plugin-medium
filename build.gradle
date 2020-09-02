@@ -33,9 +33,8 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 intellij {
-    version '2018.2.2'
     plugins = ['git4idea']
-    alternativeIdePath '/Applications/Android Studio.app'
+    localPath '/Applications/Android Studio.App/Contents'
 }
 patchPluginXml {
     changeNotes """

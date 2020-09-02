@@ -14,6 +14,7 @@
     <depends>com.intellij.modules.lang</depends>
     -->
     <depends>Git4Idea</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
 
     <application-components>
         <component>
